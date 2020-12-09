@@ -41,7 +41,7 @@ private:
 		std::cout << "Only one figure can be create at moment" <<std::endl;
 		setColor(15);
 		for (int i = 0; i < _COMMANDS_LENGS; i++) {
-			if (i == _COMMANDS_LENGS) {
+			if (i == _COMMANDS_LENGS - 1) {
 				std::cout << "0. " << strings[i] << std::endl;
 			}
 			else {
@@ -71,7 +71,9 @@ private:
 		case 4:
 			if (tryCrash()){
 				double* point = figure->getWeight();
-				std::cout << "( " <<point[0] << ", " << point [1] << ")" << std::endl;
+				std::cout << "(" <<point[0] << ", " << point [1] << ")" << std::endl;
+				point = NULL;
+				delete[] point;
 			}
 			return true;
 
@@ -133,7 +135,7 @@ private:
 			break;
 		}
 
-		if (!figure->asSidesExist()) {
+		if (!figure->Figure::asSidesExist(count)) {
 			setColor(12);
 			std::cout << "Enter exist figure!" << std::endl;
 			setColor(15);

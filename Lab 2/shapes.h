@@ -5,9 +5,7 @@
 
 class Ractangle: public Figure {
 public:
-	Ractangle(Points* points): Figure(points) {
-		side = new double [4];
-	}
+	Ractangle(Points* points): Figure(points) {}
 
 	double getArea() override {
 		double p= getPerimeter() / 2;
@@ -39,30 +37,7 @@ public:
 		return weight;
 	}
 
-	bool asSidesExist() override {
-		double sum = 0, max = -1;
-
-		for (int i = 1; i < 4; i++) {
-			double tempx = points->x[i] - points->x[i - 1];
-			double tempy = points->y[i] - points->y[i - 1];
-			side[i-1] = sqrt(tempx * tempx + tempy * tempy);
-			if (max < side[i-1]) {
-				max = side[i-1];
-			}
-			sum += side[i-1];
-		}
-		double tempx = points->x[0] - points->x[3];
-		double tempy = points->y[0] - points->y[3];
-		side[3] = sqrt(tempx * tempx + tempy * tempy);
-		sum += side[3];
-		if (max < side[3]) {
-			max = side[3];
-		}
-		if (sum - max < max) {
-			return false;
-		}
-		return true;
-	}
+	
 	~Ractangle() {
 		delete[] weight;
 	}
@@ -118,8 +93,15 @@ public:
 			}
 			sum += side[i];
 		}
+		double tempx = points->x[0] - points->x[4];
+		double tempy = points->y[0] - points->y[4];
+		side[4] = sqrt(tempx * tempx + tempy * tempy);
+		sum += side[4];
+		if (max < side[4]) {
+			max = side[4];
+		}
 
-		if (sum - max < max) {
+		if (sum - max <= max) {
 			return false;
 		}
 		return true;
