@@ -1,6 +1,8 @@
 #pragma once
 #include "console.h"
 
+Console::Console() :figure(0), points(0), length(0) {};
+
 void Console::onConsoleCall() {
 	setColor(3);
 	std::cout << "Hello, I'm your assistant. Let's start? Type Y/N" << std::endl;
@@ -164,4 +166,9 @@ void Console::createFigureFactory(int type, int count) {
 		return;
 	}
 
+}
+
+Console::~Console() {
+	delete[] figure;
+	delete points;
 }

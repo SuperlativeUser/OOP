@@ -7,12 +7,9 @@
 
 class Console {
 public:
-	Console():figure(0), points(0), length(0) {}
+	Console();
 	void onConsoleCall();
-	~Console() {
-		delete[] figure;
-		delete points;
-	}
+	~Console();
 private:
 	Figure* figure;
 	Points* points;
