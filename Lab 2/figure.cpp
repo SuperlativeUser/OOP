@@ -38,8 +38,6 @@ double Figure::getPerimeter() { return -1; }
 
 double* Figure::getWeight() { return 0; }
 
-bool Figure::asSidesExist() { return false; }
-
 void Figure::onRotate(double angle) {}
 
 void Figure::onMove(double x, double y) {}

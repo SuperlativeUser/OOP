@@ -144,12 +144,16 @@
     <ClCompile Include="console.cpp" />
     <ClCompile Include="figure.cpp" />
     <ClCompile Include="Lab 2.cpp" />
-    <ClCompile Include="shapes.cpp" />
+    <ClCompile Include="pentagon.cpp" />
+    <ClCompile Include="ractangle.cpp" />
+    <ClCompile Include="shapeFactory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="console.h" />
     <ClInclude Include="figure.h" />
-    <ClInclude Include="shapes.h" />
+    <ClInclude Include="pentagon.h" />
+    <ClInclude Include="Ractangle.h" />
+    <ClInclude Include="shapeFactory.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

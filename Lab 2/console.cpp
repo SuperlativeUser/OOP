@@ -1,5 +1,6 @@
 #pragma once
 #include "console.h"
+#include "shapeFactory.h"
 
 Console::Console() :figure(0), points(0), length(0) {};
 
@@ -44,20 +45,16 @@ bool Console::onConversationStart() {
 			return false;
 
 		case 1:
-			createFigureFactory(answer, 4);
+			createFigureFactory();
 			return true;
 
 		case 2:
-			createFigureFactory(answer, 5);
-			return true;
-
-		case 3:
 			if (tryCrash()) {
 				std::cout << figure->getArea() << std::endl;
 			}
 			return true;
 
-		case 4:
+		case 3:
 			if (tryCrash()) {
 				double* point = figure->getWeight();
 				std::cout << "(" << point[0] << ", " << point[1] << ")" << std::endl;
@@ -65,14 +62,14 @@ bool Console::onConversationStart() {
 				delete[] point;
 			}
 			return true;
-
-		case 5:
+		case 4:
 			if (tryCrash()) {
 				std::cout << figure->getPerimeter() << std::endl;
 			}
 			return true;
+			
 
-		case 6:
+		case 5:
 			if (tryCrash()) {
 				std::cout << "Enter how much to increase. Two points x and y" << std::endl;
 				double x, y;
@@ -81,23 +78,24 @@ bool Console::onConversationStart() {
 			}
 			return true;
 
-		case 7: 
+		case 6:
 			if (tryCrash()) {
 				std::cout << "Enter angle in degrees" << std::endl;
 				double angle;
 				std::cin >> angle;
 				figure->onRotate(angle);
 			}
-			return true;
+			return true;			
 
-		case 8:
+		case 7: 
 			if (tryCrash()) {
 				for (int i = 0; i < length; i++) {
-					std::cout << i + 1 << ". "<< figure->points->x[i] << " " << figure->points->y[i]<< std::endl;
+					std::cout << i + 1 << ". " << figure->points->x[i] << " " << figure->points->y[i] << std::endl;
 				}
 			}
 			return true;
-		case 9:
+
+		case 8:
 			if (tryCrash()) {
 				figure = NULL;
 				points = NULL;
@@ -105,7 +103,7 @@ bool Console::onConversationStart() {
 				std::cout << "Ok figure is deleted" << std::endl;
 				setColor(15);
 			}
-			return true;
+			return true;		
 
 		default:
 			setColor(10);
@@ -134,31 +132,19 @@ bool Console::tryCrash() {
 
 }
 
-void Console::createFigureFactory(int type, int count) {
+void Console::createFigureFactory() {
+	setColor(14);
+	std::cout << "Enter count of points" << std::endl;
+	setColor(15);
+	int count;
+	std::cin >> count;
 	length = count;
 	figure = NULL;
 	points = NULL;
-	points = new Points(count);
+	
+	figure = ShapeFactory::createFigure(count, points);
 
-	std::cout << "Enter points by clockwise" << std::endl;
-	for (int i = 0; i < count; i++) {
-		std::cout << "Enter ";
-		setColor(3);
-		std::cout << "x" << i + 1 << " y" << i + 1 << std::endl;
-		setColor(15);
-		std::cin >> points->x[i] >> points->y[i];
-	}
-
-	switch (type) {
-	case 1:
-		figure = new Ractangle(points);
-		break;
-	case 2:
-		figure = new Pentagon(points);
-		break;
-	}
-
-	if (!figure->Figure::asSidesExist(count)) {
+	if ( figure == NULL || !figure->Figure::asSidesExist(count)) {
 		setColor(12);
 		std::cout << "Enter exist figure!" << std::endl;
 		setColor(15);
@@ -169,6 +155,5 @@ void Console::createFigureFactory(int type, int count) {
 }
 
 Console::~Console() {
-	delete[] figure;
-	delete points;
+	delete figure;
 }

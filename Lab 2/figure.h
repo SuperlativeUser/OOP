@@ -3,8 +3,8 @@ class Points {
 public:
 	Points(int n);
 	
-	double* x;
-	double* y;
+	double* x = 0;
+	double* y = 0;
 	
 	~Points();
 };
@@ -20,8 +20,6 @@ public:
 	virtual double getPerimeter();
 
 	virtual double* getWeight();
-
-	virtual bool asSidesExist();
 
 	virtual void onRotate(double angle);
 

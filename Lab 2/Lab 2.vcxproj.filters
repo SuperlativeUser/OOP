@@ -18,13 +18,19 @@
     <ClCompile Include="Lab 2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="shapes.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="figure.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="console.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pentagon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ractangle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="shapeFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,7 +41,13 @@
     <ClInclude Include="console.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="shapes.h">
+    <ClInclude Include="pentagon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ractangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="shapeFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
