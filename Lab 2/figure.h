@@ -3,8 +3,8 @@ class Points {
 public:
 	Points(int n);
 	
-	double* x = 0;
-	double* y = 0;
+	double* x;
+	double* y;
 	
 	~Points();
 };
