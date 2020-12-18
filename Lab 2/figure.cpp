@@ -1,12 +1,12 @@
 #pragma once
 #include "figure.h"
 #include <cmath>
-
-Figure::Figure(Points* tpoints) : side(0) {
-	points = tpoints;
+#include <iostream>
+Figure::Figure(const int count) : side(0) {
+	points = getPoints(count);
 }
 
-bool Figure::asSidesExist(int count){
+bool Figure::asSidesExist(const int count){
 	side = new double[count];
 	double sum = 0, max = -1;
 
@@ -36,18 +36,32 @@ double Figure::getArea() { return -1; }
 
 double Figure::getPerimeter() { return -1; }
 
-double* Figure::getWeight() { return 0; }
+void Figure::getWeight() {}
 
-void Figure::onRotate(double angle) {}
+void Figure::onRotate(const double angle) {}
 
-void Figure::onMove(double x, double y) {}
+void Figure::onMove(const double x, const double y) {}
+
+Points* Figure::getPoints(const int count) {
+	Points* points = new Points(count);
+	std::cout << "Enter points by clockwise" << std::endl;
+	for (int i = 0; i < count; i++) {
+		std::cout << "Enter ";
+
+		std::cout << "x" << i + 1 << " y" << i + 1 << std::endl;
+
+		std::cin >> points->x[i] >> points->y[i];
+	}
+	return points;
+}
 
 Figure::~Figure() {
 	delete points;
 	delete[] side;
+	delete[] weight;
 }
 
-Points::Points(int n) {
+Points::Points(const int n) {
 	x = new double[n];
 	y = new double[n];
 }

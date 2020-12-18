@@ -12,24 +12,26 @@ public:
 class Figure {
 public:
 	Points* points;
-
-	Figure(Points* tpoints) ;
+	double* weight = new double[2];
+	Figure(int count);
 
 	virtual double getArea();
 
 	virtual double getPerimeter();
 
-	virtual double* getWeight();
+	virtual void getWeight();
 
-	virtual void onRotate(double angle);
+	virtual void onRotate(const double angle);
 
-	virtual void onMove(double x, double y);
+	virtual void onMove(const double x, double y);
 
-	bool asSidesExist(int count);
+	bool asSidesExist(const int count);
 	
 	~Figure();
 protected:
-	
 	double* side;
+
+private:
+	Points* getPoints(const int count);
 };
 

@@ -2,9 +2,7 @@
 #include "pentagon.h"
 #include <cmath>
 
-Pentagon::Pentagon(Points* points) : Figure(points) {
-	side = new double[_P];
-}
+Pentagon::Pentagon(int count) : Figure(count) {}
 
 double Pentagon::getArea() {
 	double p = getPerimeter() / 2;
@@ -23,7 +21,7 @@ double Pentagon::getPerimeter() {
 	return sum;
 }
 
-double* Pentagon::getWeight() {
+void Pentagon::getWeight() {
 	weight[0] = 0;
 	weight[1] = 0;
 	for (int i = 0; i < _P; i++) {
@@ -32,8 +30,6 @@ double* Pentagon::getWeight() {
 	}
 	weight[0] = weight[0] / _P;
 	weight[1] = weight[1] / _P;
-
-	return weight;
 }
 
 void Pentagon::onRotate(double angle) {
@@ -52,6 +48,4 @@ void Pentagon::onMove(double x, double y) {
 	}
 }
 
-Pentagon::~Pentagon() {
-	delete[] weight;
-}
+Pentagon::~Pentagon() {}

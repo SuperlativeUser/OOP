@@ -1,8 +1,8 @@
 #pragma once
 #include "console.h"
 #include "shapeFactory.h"
-
-Console::Console() :figure(0), points(0), length(0) {};
+#include <iostream>
+Console::Console() :figure(0), length(0) {};
 
 void Console::onConsoleCall() {
 	setColor(3);
@@ -56,10 +56,9 @@ bool Console::onConversationStart() {
 
 		case 3:
 			if (tryCrash()) {
-				double* point = figure->getWeight();
-				std::cout << "(" << point[0] << ", " << point[1] << ")" << std::endl;
-				point = NULL;
-				delete[] point;
+				figure->getWeight();
+				std::cout << "(" << figure->weight[0] << ", " << figure->weight[1] << ")" << std::endl;
+				
 			}
 			return true;
 		case 4:
@@ -97,8 +96,9 @@ bool Console::onConversationStart() {
 
 		case 8:
 			if (tryCrash()) {
-				figure = NULL;
-				points = NULL;
+				Figure* _figure = figure;
+				figure = nullptr;
+				delete _figure;
 				setColor(10);
 				std::cout << "Ok figure is deleted" << std::endl;
 				setColor(15);
@@ -122,7 +122,7 @@ void Console::setColor(int text){
 }
 
 bool Console::tryCrash() {
-	if (!figure) {
+	if (figure == nullptr) {
 		setColor(12);
 		std::cout << "Don't try to crash me. Initialaise figure" << std::endl;
 		setColor(15);
@@ -138,17 +138,15 @@ void Console::createFigureFactory() {
 	setColor(15);
 	int count;
 	std::cin >> count;
-	length = count;
-	figure = NULL;
-	points = NULL;
+	length = count; 
+	delete figure;
 	
-	figure = ShapeFactory::createFigure(count, points);
+	figure = ShapeFactory::createFigure(count);
 
-	if ( figure == NULL || !figure->Figure::asSidesExist(count)) {
+	if (figure == nullptr) {
 		setColor(12);
 		std::cout << "Enter exist figure!" << std::endl;
 		setColor(15);
-		figure = NULL;
 		return;
 	}
 

@@ -4,28 +4,24 @@
 #include "Ractangle.h"
 #include <iostream>
 
-Figure* ShapeFactory::createFigure(int count, Points* points) {
+Figure* ShapeFactory::createFigure(const int count) {
 	if (count > _MINIMUM_FIGURE_SIDE) {
-		points = new Points(count);
-
-		std::cout << "Enter points by clockwise" << std::endl;
-		for (int i = 0; i < count; i++) {
-			std::cout << "Enter ";
-
-			std::cout << "x" << i + 1 << " y" << i + 1 << std::endl;
-
-			std::cin >> points->x[i] >> points->y[i];
-		}
-
+		Figure* figure = nullptr;
 		switch (count) {
 		case 4:
-			return new Ractangle(points);
+			figure = new Ractangle(count);
+			break;
 		case 5:
-			return new Pentagon(points);
+			figure = new Pentagon(count);
+			break;
+		}
+		if (!figure->Figure::asSidesExist(count)) {
+			delete figure;
+			return nullptr;
+		}
+		else {
+			return figure;
 		}
 	}
-	else {
-		return NULL;
-	}
-	
+	return nullptr;
 }

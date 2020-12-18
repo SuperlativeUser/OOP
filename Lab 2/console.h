@@ -13,7 +13,6 @@ public:
 private:
 	static const int _COMMANDS_LENGS = 9;
 	Figure* figure;
-	Points* points;
 	int length;
 	std::string strings[_COMMANDS_LENGS] = {"Create shape", "What area?", "What weight?", "What perimeter?",
 											"Move Figure" , "Rotate Figure" , "Show coordinates", "Delete shape", "Exit"};
@@ -25,6 +24,4 @@ private:
 	bool tryCrash();
 
 	void createFigureFactory();
-
-
 };

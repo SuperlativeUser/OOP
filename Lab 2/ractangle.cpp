@@ -3,9 +3,7 @@
 #include <cmath>
 
 /*Ractangle*/
-Ractangle::Ractangle(Points* points) : Figure(points) {
-	side = new double[_R];
-}
+Ractangle::Ractangle(const int count) : Figure(count) {}
 
 double Ractangle::getArea() {
  	double p = getPerimeter() / 2;
@@ -24,7 +22,7 @@ double Ractangle::getPerimeter(){
 	return sum;
 }
 
-void Ractangle::onRotate(double angle) {
+void Ractangle::onRotate(const double angle) {
 	
 	for (int i = 0; i < _R; i++) {
 		getWeight();
@@ -41,7 +39,7 @@ void Ractangle::onMove(double x, double y) {
 	}
 }
 
-double* Ractangle::getWeight(){
+void Ractangle::getWeight(){
 	weight[0] = 0;
 	weight[1] = 0;
 	for (int i = 0; i < _R; i++) {
@@ -50,10 +48,6 @@ double* Ractangle::getWeight(){
 	}
 	weight[0] = weight[0] / _R;
 	weight[1] = weight[1] / _R;
-
-	return weight;
 }
 
-Ractangle::~Ractangle() {
-	delete[] weight;
-}
+Ractangle::~Ractangle() {}

@@ -2,20 +2,22 @@
 #include "figure.h"
 class Pentagon : public Figure {
 public:
-	Pentagon(Points* points);
+	
+
+	Pentagon(const int count);
 
 	double getArea() override;
 
 	double getPerimeter() override;
 
-	double* getWeight() override;
+	void getWeight() override;
 
-	void onRotate(double angle) override;
+	void onRotate(const double angle) override;
 
-	void onMove(double x, double y) override;
+	void onMove(const double x, const double y) override;
 
 	~Pentagon();
 private:
 	static const int _P = 5;
-	double* weight = new double[2];
+	
 };
