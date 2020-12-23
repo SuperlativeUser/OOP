@@ -1,7 +1,7 @@
 #pragma once
 #include "shapeFactory.h"
 #include "pentagon.h"
-#include "Ractangle.h"
+#include "ractangle.h"
 #include <iostream>
 
 Figure* ShapeFactory::createFigure(const int count) {

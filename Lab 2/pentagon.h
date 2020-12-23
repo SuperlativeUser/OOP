@@ -2,7 +2,6 @@
 #include "figure.h"
 class Pentagon : public Figure {
 public:
-	
 
 	Pentagon(const int count);
 

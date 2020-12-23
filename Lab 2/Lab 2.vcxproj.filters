@@ -47,13 +47,13 @@
     <ClInclude Include="pentagon.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Ractangle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="shapeFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="points.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ractangle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

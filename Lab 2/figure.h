@@ -5,7 +5,7 @@ class Figure {
 public:
 	Points* points;
 	double* weight = new double[2];
-	Figure(int count);
+	Figure(const int count);
 
 	virtual double getArea();
 
