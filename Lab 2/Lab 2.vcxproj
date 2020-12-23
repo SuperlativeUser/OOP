@@ -145,6 +145,7 @@
     <ClCompile Include="figure.cpp" />
     <ClCompile Include="Lab 2.cpp" />
     <ClCompile Include="pentagon.cpp" />
+    <ClCompile Include="points.cpp" />
     <ClCompile Include="ractangle.cpp" />
     <ClCompile Include="shapeFactory.cpp" />
   </ItemGroup>
@@ -152,6 +153,7 @@
     <ClInclude Include="console.h" />
     <ClInclude Include="figure.h" />
     <ClInclude Include="pentagon.h" />
+    <ClInclude Include="points.h" />
     <ClInclude Include="Ractangle.h" />
     <ClInclude Include="shapeFactory.h" />
   </ItemGroup>
